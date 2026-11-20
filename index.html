@@ -693,6 +693,63 @@ footer{
   white-space: pre;
 }
 
+
+/* MINI CODE EDITOR */
+
+.code-playground {
+  margin-top: 15px;
+}
+
+.code-playground textarea {
+  width: 100%;
+  min-height: 130px;
+  padding: 13px;
+
+  color: #69adff;
+  background: #020617;
+
+  border: 1px solid rgba(0,110,255,.4);
+  border-radius: 12px;
+
+  font-family: Consolas, monospace;
+  font-size: 13px;
+  line-height: 1.6;
+
+  resize: vertical;
+}
+
+.code-playground button {
+  margin: 10px 0;
+}
+
+.code-output {
+  width: 100%;
+  min-height: 80px;
+  padding: 12px;
+
+  color: #dce6f5;
+  background: rgba(0,0,0,.5);
+
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 12px;
+
+  overflow: auto;
+}
+
+.code-output iframe {
+  width: 100%;
+  min-height: 180px;
+  border: none;
+  border-radius: 8px;
+  background: white;
+}
+
+.output-title {
+  margin: 12px 0 5px;
+  color: #69adff;
+  font-size: .9rem;
+}
+
 </style>
 </head>
 
@@ -1130,6 +1187,25 @@ footer{
 print("Halo, " + nama)
 print("Selamat belajar Python!")</code></pre>
 
+      
+<div class="code-playground">
+
+  <h3>🧪 Coba Python Sendiri</h3>
+
+  <textarea id="pythonCode">nama = "Noval"
+
+print("Halo, " + nama)
+print("Selamat belajar Python!")</textarea>
+
+  <button class="btn" onclick="runPython()">
+    ▶ Jalankan Kode
+  </button>
+
+  <p class="output-title">Hasil:</p>
+  <pre id="pythonOutput" class="code-output">Hasil akan muncul di sini...</pre>
+
+</div>
+
     </div>
 
     <!-- HTML -->
@@ -1158,6 +1234,26 @@ print("Selamat belajar Python!")</code></pre>
 &lt;/html&gt;</code></pre>
 
     </div>
+      
+<div class="code-playground">
+
+  <h3>🧪 Coba HTML Sendiri</h3>
+
+  <textarea id="htmlCode"><h1>Halo Noval!</h1>
+<p>Ini website pertama saya.</p>
+<button>Klik Saya</button></textarea>
+
+  <button class="btn" onclick="runHTML()">
+    ▶ Jalankan Kode
+  </button>
+
+  <p class="output-title">Hasil:</p>
+
+  <div class="code-output">
+    <iframe id="htmlOutput" sandbox="allow-scripts"></iframe>
+  </div>
+
+</div>
 
     <!-- CSS -->
     <div class="card">
@@ -1185,6 +1281,33 @@ h1 {
 }</code></pre>
 
     </div>
+      
+<div class="code-playground">
+
+  <h3>🧪 Coba CSS Sendiri</h3>
+
+  <textarea id="cssCode">body {
+  background: #020617;
+  color: white;
+  font-family: Arial;
+  text-align: center;
+}
+
+h1 {
+  color: #006eff;
+}</textarea>
+
+  <button class="btn" onclick="runCSS()">
+    ▶ Jalankan Kode
+  </button>
+
+  <p class="output-title">Hasil:</p>
+
+  <div class="code-output">
+    <iframe id="cssOutput" sandbox="allow-scripts"></iframe>
+  </div>
+
+</div>
 
     <!-- JAVASCRIPT -->
     <div class="card">
@@ -1211,6 +1334,32 @@ sapa();</code></pre>
     </div>
 
   </div>
+   
+<div class="code-playground">
+
+  <h3>🧪 Coba JavaScript Sendiri</h3>
+
+  <textarea id="jsCode">let nama = "Noval";
+
+document.getElementById("hasil")
+  .innerText = "Halo, " + nama + "!";
+
+document.getElementById("tombol")
+  .addEventListener("click", function() {
+    alert("Selamat belajar JavaScript!");
+  });</textarea>
+
+  <button class="btn" onclick="runJS()">
+    ▶ Jalankan Kode
+  </button>
+
+  <p class="output-title">Hasil:</p>
+
+  <div class="code-output">
+    <iframe id="jsOutput" sandbox="allow-scripts"></iframe>
+  </div>
+
+</div>
 
   <!-- HUBUNGAN BAHASA -->
   <div class="card">
@@ -1608,6 +1757,107 @@ window.addEventListener("load",function(){
   },500);
 
 });
+
+/* =====================================
+   MINI CODE EDITOR
+===================================== */
+
+// HTML
+function runHTML() {
+  const code = document.getElementById("htmlCode").value;
+
+  document.getElementById("htmlOutput").srcdoc = code;
+}
+
+// CSS
+function runCSS() {
+  const code = document.getElementById("cssCode").value;
+
+  document.getElementById("cssOutput").srcdoc = `
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <style>${code}</style>
+    </head>
+    <body>
+      <h1>Halo Noval!</h1>
+      <p>Ini contoh tampilan CSS.</p>
+      <button>Contoh Tombol</button>
+    </body>
+    </html>
+  `;
+}
+
+// JavaScript
+function runJS() {
+  const code = document.getElementById("jsCode").value;
+
+  document.getElementById("jsOutput").srcdoc = `
+    <!DOCTYPE html>
+    <html>
+    <body>
+      <h2 id="hasil">Hasil akan muncul di sini</h2>
+      <button id="tombol">Klik Saya</button>
+
+      <script>
+        try {
+          ${code}
+        } catch(error) {
+          document.body.innerHTML +=
+            "<pre>" + error.message + "</pre>";
+        }
+      <\/script>
+    </body>
+    </html>
+  `;
+}
+
+// PYTHON
+let pyodideInstance = null;
+
+async function runPython() {
+  const output = document.getElementById("pythonOutput");
+  const code = document.getElementById("pythonCode").value;
+
+  output.textContent = "Menjalankan Python...";
+
+  try {
+    if (!pyodideInstance) {
+      output.textContent = "Memuat Python...";
+
+      if (!window.loadPyodide) {
+        await new Promise((resolve, reject) => {
+          const script = document.createElement("script");
+          script.src =
+            "https://cdn.jsdelivr.net/pyodide/v0.27.7/full/pyodide.js";
+          script.onload = resolve;
+          script.onerror = reject;
+          document.head.appendChild(script);
+        });
+      }
+
+      pyodideInstance = await loadPyodide();
+    }
+
+    pyodideInstance.globals.set("user_code", code);
+
+    const result = await pyodideInstance.runPythonAsync(`
+import io
+import contextlib
+
+hasil = io.StringIO()
+
+with contextlib.redirect_stdout(hasil):
+    exec(user_code, {})
+
+hasil.getvalue()
+    `);
+
+    output.textContent = result || "Program berhasil dijalankan.";
+  } catch (error) {
+    output.textContent = "Error: " + error.message;
+  }
+}
 
 </script>
 
