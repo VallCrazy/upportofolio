@@ -669,6 +669,30 @@ footer{
   width:100%;
   margin-top:5px;
 }
+
+/* CONTOH KODE PROGRAM */
+
+.code-example {
+  margin-top: 12px;
+  padding: 16px;
+
+  background: rgba(0, 0, 0, 0.45);
+
+  border: 1px solid rgba(0, 110, 255, 0.3);
+  border-radius: 12px;
+
+  overflow-x: auto;
+
+  color: #69adff;
+  font-family: Consolas, monospace;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.code-example code {
+  white-space: pre;
+}
+
 </style>
 </head>
 
@@ -1072,111 +1096,131 @@ footer{
 
 </section>
 
+
 <!-- =====================================================
      BAHASA PEMROGRAMAN
 ===================================================== -->
 
-<section
-  id="languages"
-  class="page">
+<section id="languages" class="page">
 
-  <h1>
-    Bahasa Pemrograman & Teknologi Web
-  </h1>
+  <h1>Bahasa Pemrograman & Teknologi Web</h1>
 
   <p class="sub">
-    Beberapa bahasa dan teknologi yang saya pelajari
-    dalam dunia coding.
+    Mengenal beberapa bahasa pemrograman beserta contoh kodenya.
   </p>
 
   <div class="grid">
 
     <!-- PYTHON -->
     <div class="card">
-
       <h3>🐍 Python</h3>
 
       <p>
-        Python adalah bahasa pemrograman yang memiliki
-        sintaks sederhana sehingga mudah dipelajari.
-        Python dapat digunakan untuk membuat aplikasi,
-        mengolah data, otomatisasi, dan pengembangan AI.
+        Python adalah bahasa pemrograman dengan sintaks
+        sederhana yang mudah dipelajari. Digunakan untuk
+        membuat aplikasi, mengolah data, dan otomatisasi.
       </p>
 
-      <span class="tag">
-        Bahasa Pemrograman
-      </span>
+      <span class="tag">Bahasa Pemrograman</span>
+
+      <h3>Contoh Kode Python</h3>
+
+      <pre class="code-example"><code>nama = "Noval"
+
+print("Halo, " + nama)
+print("Selamat belajar Python!")</code></pre>
 
     </div>
 
     <!-- HTML -->
     <div class="card">
-
       <h3>🌐 HTML</h3>
 
       <p>
-        HTML (HyperText Markup Language) adalah bahasa
-        markup yang digunakan untuk membuat struktur
-        halaman website, seperti judul, paragraf,
-        gambar, tautan, dan formulir.
+        HTML adalah bahasa markup yang digunakan untuk
+        membuat struktur halaman website, seperti judul,
+        paragraf, gambar, dan tautan.
       </p>
 
-      <span class="tag">
-        Bahasa Markup
-      </span>
+      <span class="tag">Bahasa Markup</span>
+
+      <h3>Contoh Kode HTML</h3>
+
+      <pre class="code-example"><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;Website Saya&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Halo, Noval!&lt;/h1&gt;
+  &lt;p&gt;Selamat datang di website saya.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
 
     </div>
 
     <!-- CSS -->
     <div class="card">
-
       <h3>🎨 CSS</h3>
 
       <p>
-        CSS (Cascading Style Sheets) adalah bahasa
-        stylesheet yang digunakan untuk mengatur
-        tampilan website, seperti warna, ukuran teks,
-        jarak, tata letak, dan animasi.
+        CSS adalah bahasa stylesheet yang digunakan
+        untuk mengatur tampilan website, seperti warna,
+        ukuran teks, jarak, dan tata letak.
       </p>
 
-      <span class="tag">
-        Bahasa Style
-      </span>
+      <span class="tag">Bahasa Style</span>
+
+      <h3>Contoh Kode CSS</h3>
+
+      <pre class="code-example"><code>body {
+  background-color: #020617;
+  color: white;
+  font-family: Arial;
+}
+
+h1 {
+  color: #006eff;
+  text-align: center;
+}</code></pre>
 
     </div>
 
     <!-- JAVASCRIPT -->
     <div class="card">
-
       <h3>⚡ JavaScript</h3>
 
       <p>
         JavaScript adalah bahasa pemrograman yang
-        digunakan untuk membuat website menjadi
-        interaktif, seperti menjalankan tombol,
-        memvalidasi formulir, dan menampilkan menu.
+        digunakan untuk membuat website interaktif,
+        seperti tombol, menu, dan formulir.
       </p>
 
-      <span class="tag">
-        Bahasa Pemrograman
-      </span>
+      <span class="tag">Bahasa Pemrograman</span>
+
+      <h3>Contoh Kode JavaScript</h3>
+
+      <pre class="code-example"><code>let nama = "Noval";
+
+function sapa() {
+  alert("Halo, " + nama);
+}
+
+sapa();</code></pre>
 
     </div>
 
   </div>
 
   <!-- HUBUNGAN BAHASA -->
-
   <div class="card">
 
     <h3>🔗 Hubungan HTML, CSS, dan JavaScript</h3>
 
     <p>
-      HTML membentuk struktur website, CSS mengatur
-      tampilannya, sedangkan JavaScript menambahkan
-      fungsi dan interaksi. Ketiganya dapat digunakan
-      bersama untuk membuat website yang menarik
-      dan mudah digunakan.
+      HTML digunakan untuk membuat struktur website,
+      CSS mengatur tampilannya, sedangkan JavaScript
+      membuat website menjadi interaktif.
     </p>
 
   </div>
@@ -1184,12 +1228,11 @@ footer{
   <button
     class="btn"
     onclick="showPage('certificate')">
-
     Lihat Sertifikat →
-
   </button>
 
 </section>
+
    
 <!-- =====================================================
      SERTIFIKAT
